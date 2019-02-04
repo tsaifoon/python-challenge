@@ -44,18 +44,18 @@ for unique in uniqCand:
         if(people == unique):
             count += 1
     comboList.append( [unique,(count/totalVotes * 100),count] )
-    print(f"{unique}: {count/totalVotes * 100}% ({count})")        
+    print(f"{unique}: {round(count/totalVotes * 100,3)}% ({count})")        
 
 print(f"{comboList[0][1]}")
 winName = ""
 winner = 0
 for x in comboList:
-    if(int(comboList[x][1]) > winner):
-        winner = comboList[x][1]
-        winName = comboList[x][0]
+   if(comboList[comboList.index(x)][1] > winner):
+        winner = comboList[comboList.index(x)][1]
+        winName = comboList[comboList.index(x)][0]
 
 print(f"-------------------------")
-print(f"Winner: ")
+print(f"Winner: {winName}")
 print(f"-------------------------")
 #The total number of votes each candidate won
 
