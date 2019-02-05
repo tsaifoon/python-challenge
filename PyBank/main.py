@@ -22,6 +22,7 @@ newFirstDate = datetime.strptime(month[0], '%b-%Y')
 newLastDate = datetime.strptime(month[len(month)-1], '%b-%Y')
 totalMonth = 0
 #needs conversion to numeric format
+#**output not quite right -- how to convert the "day" to "months" 
 totalMonth = (newLastDate - newFirstDate)/365.25 * 12
 print(f"Financial Analysis")
 print(f"-----------------------------")
@@ -49,9 +50,10 @@ for x in proLoss:
     initial = int(x)
 #initialize average value
 totAvg = 0
+avgChange.pop(0)
 for x in avgChange:
     totAvg += int(x)
-avgValue = totAvg / len(avgChange)    
+avgValue = totAvg / len(avgChange)   
 print(f"Average Change: ${avgValue}")
 
 
