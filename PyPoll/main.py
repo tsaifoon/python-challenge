@@ -37,16 +37,20 @@ for people in candidate:
             uniqCand.append(people)
 
 #The percentage of votes each candidate won
+#The total number of votes each candidate won
+
 comboList = []
 for unique in uniqCand:
     count = 0
     for people in candidate:            
         if(people == unique):
             count += 1
-    comboList.append( [unique,(count/totalVotes * 100),count] )
-    print(f"{unique}: {round(count/totalVotes * 100,3)}% ({count})")        
+    comboList.append([unique,round(count/totalVotes * 100,3),count])
+    print(f"{unique}: {round(count/totalVotes * 100,3)}% ({count})")  
 
-print(f"{comboList[0][1]}")
+#zip up list
+
+#The winner of the election based on popular vote.
 winName = ""
 winner = 0
 for x in comboList:
@@ -57,7 +61,18 @@ for x in comboList:
 print(f"-------------------------")
 print(f"Winner: {winName}")
 print(f"-------------------------")
-#The total number of votes each candidate won
 
-#The winner of the election based on popular vote.
+#write output
+output_file = os.path.join("pyPollOutput.csv")
+with open(output_file,"w",newline="") as datafile:
+        writer = csv.writer(datafile)
+        writer.writerow(["Election Results"])
+        writer.writerow(["-------------------------"])
+        writer.writerow(["Total Votes: ", totalVotes])
+        writer.writerow(["-------------------------"])
+        for x in comboList:
+                writer.writerow(comboList[comboList.index(x)])
+        writer.writerow(["-------------------------"])
+        writer.writerow(["Winner: ", winName])
+        writer.writerow(["-------------------------"])
 
