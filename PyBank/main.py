@@ -20,13 +20,14 @@ with open(csvPath,newline="") as csvfile:
 #The total number of months included in the dataset - take last value in list minus first to find total time.
 newFirstDate = datetime.strptime(month[0], '%b-%Y')
 newLastDate = datetime.strptime(month[len(month)-1], '%b-%Y')
+print(f"{newLastDate}")
 totalMonth = 0
 #needs conversion to numeric format
 #**output not quite right -- how to convert the "day" to "months" 
-totalMonth = (newLastDate - newFirstDate)/365.25 * 12
+totalMonth = ((newLastDate - newFirstDate ).days + 28)/ 365.25 * 12  #added 28 days for the full month of February
 print(f"Financial Analysis")
 print(f"-----------------------------")
-print(f"Total Months:{totalMonth}")
+print(f"Total Months:{int(round(totalMonth))} months") #rounded up to nearest month
 
 
 #The net total amount of "Profit/Losses" over the entire period
