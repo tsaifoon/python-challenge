@@ -95,7 +95,7 @@ with open(output_file,"w",newline="") as datafile:
     writer.writerow("\n")
     writer.writerow(["Financial Analysis"])
     writer.writerow(["--------------------"])
-    writer.writerow(["Total Months: ", totalMonth])
+    writer.writerow(["Total Months: ", int(round(totalMonth)) , "months"])
     writer.writerow(["Total: ", totChange])
     writer.writerow(["Average Change: ", avgValue])
     writer.writerow(["Greatest Increase in Profits: ", gInc])
